@@ -1,1 +1,1 @@
-# GitHub-Actions-workthrough
+# GitHub-Actions-walkthrough
