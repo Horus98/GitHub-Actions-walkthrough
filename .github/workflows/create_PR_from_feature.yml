@@ -1,0 +1,75 @@
+name: Create PR
+
+on:
+  push:
+    branches: [ 'feature/*']
+
+jobs:
+  pr-to-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "test"
+        pr_title: "Pull ${{ github.ref_name }} into test"
+        pr_body: ":crown: PR Automatizado por la action"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - run: gh extension install kyanny/gh-pr-draft
+      env:
+        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+    - run: gh pr-draft
+      env:
+        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+
+  comment-pr:
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.event.head_commit.message, ':fix:') }}
+    needs: pr-to-test
+    steps:
+    - uses: actions/checkout@v3
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
+      with:
+        args: >
+          -Dsonar.organization=maxi512
+          -Dsonar.projectKey=maxi512_typescript-api
+          -Dsonar.sources=src/
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
+
+    - name: Comment Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        comment_title: "Tests Results"
+    
+    - run: gh pr ready
+      env:
+        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
