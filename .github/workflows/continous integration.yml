@@ -41,7 +41,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
       with:
         args: >
-          -Dsonar.organization=Horus98
+          -Dsonar.organization=tesis-thm
           -Dsonar.projectKey=Horus98_GitHub-Actions-walkthrough
           -Dsonar.sources=src/
     
