@@ -22,10 +22,10 @@ jobs:
     
     - run: gh extension install kyanny/gh-pr-draft
       env:
-        GH_TOKEN: ${{ secrets.GHTOKEN }}
+        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - run: gh pr-draft
       env:
-        GH_TOKEN: ${{ secrets.GHTOKEN }}
+        GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   comment-pr:
     runs-on: ubuntu-latest
