@@ -19,7 +19,11 @@ jobs:
         pr_body: ":crown: PR Automatizado por la action"
     
     - run: gh extension install kyanny/gh-pr-draft
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: gh pr-draft
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   comment-pr:
     runs-on: ubuntu-latest
