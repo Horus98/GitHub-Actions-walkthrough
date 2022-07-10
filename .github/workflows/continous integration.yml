@@ -63,7 +63,7 @@ jobs:
     
     - run: gh pr ready
       env:
-        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   lint:
     runs-on: ubuntu-latest
