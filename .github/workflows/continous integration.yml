@@ -7,8 +7,6 @@ on:
 jobs:
   pr-to-test:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
     steps:
     - uses: actions/checkout@v3
 
