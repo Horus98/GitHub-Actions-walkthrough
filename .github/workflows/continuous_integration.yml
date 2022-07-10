@@ -9,17 +9,14 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:
         destination_branch: "test"
         pr_title: "Pull ${{ github.ref_name }} into test"
         pr_body: ":crown: PR Automatizado por la action"
-        github_token: ${{ secrets.GHTOKEN }}
     
     - run: gh extension install kyanny/gh-pr-draft
       env:
@@ -63,7 +60,7 @@ jobs:
     
     - run: gh pr ready
       env:
-        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   lint:
     runs-on: ubuntu-latest
