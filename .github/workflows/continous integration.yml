@@ -42,7 +42,7 @@ jobs:
       with:
         args: >
           -Dsonar.organization=horus98
-          -Dsonar.projectKey=tesis-thm
+          -Dsonar.projectKey=Horus98_GitHub-Actions-walkthrough
           -Dsonar.sources=src/
     
     - name: Use Node.js ${{ matrix.node-version }}
