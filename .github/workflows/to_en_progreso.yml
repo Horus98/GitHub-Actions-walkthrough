@@ -12,4 +12,4 @@ jobs:
         with:
           project: Microservice Development
           column: In progress
-          repo-token: ${{ secrets.GHTOKEN }}
+          repo-token: ${{ secrets.GH_TOKEN }}
