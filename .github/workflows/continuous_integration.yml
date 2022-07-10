@@ -6,6 +6,8 @@ on:
 
 jobs:
   pr-to-test:
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
     env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -20,10 +22,10 @@ jobs:
     
     - run: gh extension install kyanny/gh-pr-draft
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: gh pr-draft
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   comment-pr:
     runs-on: ubuntu-latest
@@ -38,8 +40,8 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_KEY }}
       with:
         args: >
-          -Dsonar.organization=maxi512
-          -Dsonar.projectKey=maxi512_typescript-api
+          -Dsonar.organization=tesis-thm
+          -Dsonar.projectKey=Horus98_GitHub-Actions-walkthrough
           -Dsonar.sources=src/
     
     - name: Use Node.js ${{ matrix.node-version }}
@@ -60,7 +62,7 @@ jobs:
     
     - run: gh pr ready
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
   lint:
     runs-on: ubuntu-latest
