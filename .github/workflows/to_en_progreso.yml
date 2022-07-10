@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.1
         with:
-          project: Features
-          column: En desarrollo
+          project: Microservice Development
+          column: In progress
           repo-token: ${{ secrets.GH_TOKEN }}
