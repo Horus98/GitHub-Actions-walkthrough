@@ -1,9 +1,9 @@
-import express from 'express';
+import { Request, Response } from 'express';
 import { autoInjectable } from 'tsyringe';
 
 @autoInjectable()
 class WeatherController {
-    getWeather(req: express.Request, res: express.Response) {
+    getWeather(req: Request, res: Response) {
         res.json({title: 'Hello'});
     }
 }
