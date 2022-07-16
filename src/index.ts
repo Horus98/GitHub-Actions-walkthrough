@@ -2,10 +2,13 @@ import 'reflect-metadata';
 import { container } from 'tsyringe';
 import express from 'express';
 import WeatherRouter from './WeatherRouter';
+import AccuWeatherProxy from './repositories/broker/proxies/AccuWeatherProxy';
 
 const app = express();
 
 const port = process.env.PORT || 4000;
+
+container.register('ValueClass', {useClass: AccuWeatherProxy});
 
 const weatherRouter = container.resolve(WeatherRouter);
 
