@@ -4,7 +4,6 @@ import { injectable, registry } from 'tsyringe';
 import AccuWeatherService from '../services/AccuWeatherService';
 
 @injectable()
-@registry([{ token: 'ValueClass', useClass: AccuWeatherProxy }])
 class AccuWeatherProxy implements IProxy {
     service: AccuWeatherService;
 
