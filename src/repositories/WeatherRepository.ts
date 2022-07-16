@@ -11,7 +11,6 @@ class WeatherRepository {
     }
 
     public getWeather() {
-        console.log('repository');
         return this.broker.getWeatherResponses();
     };
 }
