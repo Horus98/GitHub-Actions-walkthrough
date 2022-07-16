@@ -1,6 +1,7 @@
 import IWeatherResponse from './IWeatherResponse';
 import IProxy from './proxies/IProxy';
-import {injectable, injectAll} from 'tsyringe';
+import { injectable, injectAll } from 'tsyringe';
+import { response } from 'express';
 
 @injectable()
 class WeatherBroker {
@@ -11,8 +12,12 @@ class WeatherBroker {
         this.proxies = proxies;
     }
 
-    getWeatherResponses(): Promise<IWeatherResponse>[] {
-        return this.proxies.map((proxy: IProxy) => proxy.getWeatherResponse());
+    async getWeatherResponses(): Promise<IWeatherResponse[]> {
+        const responses: IWeatherResponse[] = [];
+        for(const proxy of this.proxies){
+            responses.push(await proxy.getWeatherResponse());
+        }
+        return responses;
     }
 }
 
