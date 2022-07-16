@@ -11,8 +11,8 @@ class WeatherBroker {
         this.proxies = proxies;
     }
 
-    getWeatherResponses(): IWeatherResponse[] {
-        return [{source: ''}];
+    getWeatherResponses(): Promise<IWeatherResponse>[] {
+        return this.proxies.map((proxy: IProxy) => proxy.getWeatherResponse());
     }
 }
 

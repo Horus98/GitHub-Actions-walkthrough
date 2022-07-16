@@ -1,6 +1,6 @@
 import IProxy from './IProxy';
 import IWeatherResponse from '../IWeatherResponse';
-import { injectable, registry } from 'tsyringe';
+import { injectable } from 'tsyringe';
 import AccuWeatherService from '../services/AccuWeatherService';
 
 @injectable()
@@ -11,9 +11,9 @@ class AccuWeatherProxy implements IProxy {
         this.service = service;
     }
 
-    getWeatherResponse(): IWeatherResponse {
-        const serviceResponse = this.service.getCurrentWeather();
-        return {source: 'AccuWeather'};
+    async getWeatherResponse(): Promise<IWeatherResponse> {
+        const response = await this.service.getCurrentWeather();
+        return {source: this.service.getName(), country: response.data.LocalizedName};
     }
 }
 

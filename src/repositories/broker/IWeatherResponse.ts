@@ -1,5 +1,6 @@
 interface IWeatherResponse {
-    source: string
+    source: string,
+    country: string
 }
 
 export default IWeatherResponse;
