@@ -6,3 +6,5 @@ class AccuWeatherService {
         return '';
     }
 }
+
+export default AccuWeatherService;
