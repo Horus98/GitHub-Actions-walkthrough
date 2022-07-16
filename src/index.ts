@@ -8,9 +8,7 @@ app.get('/', (_req, res) => {
   res.send('Express + TypeScript Serverrr');
 });
 
-console.log('testing....');
-
 app.listen(port, () => {
-  console.log('[server]: Server is running at https://localhost:3000');
+  console.log(`[server]: Server is running at https://localhost:${port}`);
 });
 
