@@ -7,7 +7,7 @@ class WeatherBroker {
 
     proxies: IProxy[];
 
-    constructor(@injectAll('ValueClass') proxies: IProxy[]) {
+    constructor(@injectAll('Proxy') proxies: IProxy[]) {
         this.proxies = proxies;
     }
 

@@ -8,7 +8,7 @@ const app = express();
 
 const port = process.env.PORT || 4000;
 
-container.register('ValueClass', {useClass: AccuWeatherProxy});
+container.register('Proxy', {useClass: AccuWeatherProxy});
 
 const weatherRouter = container.resolve(WeatherRouter);
 
