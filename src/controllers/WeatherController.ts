@@ -12,7 +12,7 @@ class WeatherController {
     }
 
     getWeather = (req: Request, res: Response) =>{
-        res.json(this.weatherRepository.getWeather());
+        res.json({data: this.weatherRepository.getWeather()});
     };
 }
 
