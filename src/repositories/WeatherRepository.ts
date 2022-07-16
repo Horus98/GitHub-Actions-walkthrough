@@ -1,5 +1,6 @@
 import WeatherBroker from './broker/WeatherBroker';
 import { autoInjectable } from 'tsyringe';
+import IWeatherResponse from './broker/IWeatherResponse';
 
 @autoInjectable()
 class WeatherRepository {
@@ -10,7 +11,7 @@ class WeatherRepository {
         this.broker = broker;
     }
 
-    public getWeather() {
+    getWeather(): Promise<IWeatherResponse[]> {
         return this.broker.getWeatherResponses();
     };
 }
