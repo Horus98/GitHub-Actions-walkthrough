@@ -11,8 +11,8 @@ class WeatherController {
         this.weatherRepository = weatherRepository;
     }
 
-    getWeather = (req: Request, res: Response) =>{
-        res.json({data: this.weatherRepository.getWeather()});
+    getWeather = async (_req: Request, res: Response) => {
+        res.json({data: await this.weatherRepository.getWeather()});
     };
 }
 
