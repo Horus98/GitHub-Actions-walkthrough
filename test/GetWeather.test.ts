@@ -1,6 +1,5 @@
 import app from '../src/index';
 import request from 'supertest';
-import AccuWeatherService from '../src/repositories/broker/services/AccuWeatherService';
 
 test('Check response format', async () => {
     const response = await request(app).get('/api');
@@ -10,11 +9,6 @@ test('Check response format', async () => {
     response.body.data.forEach(element => {
         expect(element.source).toBeDefined();
     });
-});
-
-test('Test AccuWeatherService', async () => {
-    const service = new AccuWeatherService();
-    console.log((await service.getCurrentWeather()).data);
 });
 
 afterAll(() => {
