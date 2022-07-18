@@ -7,8 +7,8 @@ interface IWeatherResponse {
     min_temperature: ITemperatureResponse,
     max_temperature: ITemperatureResponse,
     wind: IWindResponse,
-    sunrise: 'string',
-    sunset: 'string',
+    sunrise: string,
+    sunset: string,
 }
 
 export default IWeatherResponse;
