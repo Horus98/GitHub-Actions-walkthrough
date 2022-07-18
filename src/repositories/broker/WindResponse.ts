@@ -1,7 +1,7 @@
-interface IWindResponse {
+interface WindResponse {
     speed: Number,
     unit: string,
     degrees: Number
 }
 
-export default IWindResponse;
+export default WindResponse;

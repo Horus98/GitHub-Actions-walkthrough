@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import IWeatherResponse from './IWeatherResponse';
+import WeatherResponse from './WeatherResponse';
 import IProxy from './proxies/IProxy';
 import { injectable, injectAll } from 'tsyringe';
 
@@ -12,8 +12,8 @@ class WeatherBroker {
         this.proxies = proxies;
     }
 
-    async getWeatherResponses(city: string): Promise<IWeatherResponse[]> {
-        const responses: IWeatherResponse[] = [];
+    async getWeatherResponses(city: string): Promise<WeatherResponse[]> {
+        const responses: WeatherResponse[] = [];
         for(const proxy of this.proxies){
             responses.push(await proxy.getWeatherResponse(city));
         }

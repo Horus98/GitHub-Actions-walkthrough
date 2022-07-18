@@ -1,11 +1,11 @@
-import IWeatherResponse from '../IWeatherResponse';
+import WeatherResponse from '../WeatherResponse';
 import { autoInjectable } from 'tsyringe';
 
 @autoInjectable()
 class AccuWeatherResponseBuilder {
     private NAME = 'AccuWeather';
 
-    buildWeatherResponse(data, city: string): IWeatherResponse {
+    buildWeatherResponse(data, city: string): WeatherResponse {
         return {
             source: this.NAME,
             city: city,
