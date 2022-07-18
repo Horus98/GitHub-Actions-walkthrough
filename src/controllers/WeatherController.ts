@@ -11,8 +11,9 @@ class WeatherController {
         this.weatherRepository = weatherRepository;
     }
 
-    getWeather = async (_req: Request, res: Response) => {
-        res.json({data: await this.weatherRepository.getWeather()});
+    getWeather = async (req: Request, res: Response) => {
+        const city = new String(req.query.city);
+        res.json({data: await this.weatherRepository.getWeather(city.toString())});
     };
 }
 

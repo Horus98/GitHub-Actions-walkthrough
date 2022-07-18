@@ -12,10 +12,10 @@ class WeatherBroker {
         this.proxies = proxies;
     }
 
-    async getWeatherResponses(): Promise<IWeatherResponse[]> {
+    async getWeatherResponses(city: string): Promise<IWeatherResponse[]> {
         const responses: IWeatherResponse[] = [];
         for(const proxy of this.proxies){
-            responses.push(await proxy.getWeatherResponse());
+            responses.push(await proxy.getWeatherResponse(city));
         }
         return responses;
     }

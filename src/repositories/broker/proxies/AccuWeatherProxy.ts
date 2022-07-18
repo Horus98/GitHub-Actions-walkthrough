@@ -15,9 +15,10 @@ class AccuWeatherProxy implements IProxy {
         this.responseBuilder = responseBuilder;
     }
 
-    async getWeatherResponse(): Promise<IWeatherResponse> {
-        const response = await this.service.getCurrentWeather();
-        return this.responseBuilder.buildWeatherResponse(response.data);
+    async getWeatherResponse(city: string): Promise<IWeatherResponse> {
+        const cityResponse = await this.service.getCityCode(city);
+        const currentWetherResponse = await this.service.getCurrentWeather(cityResponse.data[0].Details.CanonicalLocationKey);
+        return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data, cityResponse.data[0].LocalizedName);
     }
 }
 

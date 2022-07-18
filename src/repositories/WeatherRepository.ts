@@ -11,8 +11,8 @@ class WeatherRepository {
         this.broker = broker;
     }
 
-    getWeather(): Promise<IWeatherResponse[]> {
-        return this.broker.getWeatherResponses();
+    getWeather(city: string): Promise<IWeatherResponse[]> {
+        return this.broker.getWeatherResponses(city);
     };
 }
 

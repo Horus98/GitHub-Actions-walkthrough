@@ -5,10 +5,10 @@ import { autoInjectable } from 'tsyringe';
 class AccuWeatherResponseBuilder {
     private NAME = 'AccuWeather';
 
-    buildWeatherResponse(data): IWeatherResponse {
+    buildWeatherResponse(data, city: string): IWeatherResponse {
         return {
             source: this.NAME,
-            city: 'string',
+            city: city,
             min_temperature: {
                 value: data.DailyForecasts[0].Temperature.Minimum.Value,
                 unit: data.DailyForecasts[0].Temperature.Minimum.Unit

@@ -1,7 +1,7 @@
 import IWeatherResponse from '../IWeatherResponse';
 
 interface IProxy {
-    getWeatherResponse(): Promise<IWeatherResponse>;
+    getWeatherResponse(city: string): Promise<IWeatherResponse>;
 }
 
 export default IProxy;
