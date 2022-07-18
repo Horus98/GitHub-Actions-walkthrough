@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { container } from 'tsyringe';
 import express from 'express';
 import WeatherRouter from './WeatherRouter';
-import AccuWeatherProxy from './repositories/broker/proxies/AccuWeatherProxy';
+import AccuWeatherProxy from './repositories/broker/proxies/accuWeather/AccuWeatherProxy';
 
 const app = express();
 

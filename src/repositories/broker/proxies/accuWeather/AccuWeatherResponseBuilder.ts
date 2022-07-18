@@ -1,4 +1,4 @@
-import WeatherResponse from '../WeatherResponse';
+import WeatherResponse from '../../WeatherResponse';
 import { autoInjectable } from 'tsyringe';
 
 @autoInjectable()
