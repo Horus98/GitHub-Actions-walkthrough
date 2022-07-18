@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import WeatherResponse from './WeatherResponse';
-import IProxy from './proxies/IProxy';
+import IProxy from './proxies/Proxy';
 import { injectable, injectAll } from 'tsyringe';
 
 @injectable()

@@ -1,4 +1,4 @@
-import IProxy from './IProxy';
+import Proxy from './Proxy';
 import WeatherResponse from '../WeatherResponse';
 import AccuWeatherService from '../services/AccuWeatherService';
 import AccuWeatherResponseBuilder from './AccuWeatherResponseBuilder';
@@ -6,7 +6,7 @@ import AccuWeatherResponseBuilder from './AccuWeatherResponseBuilder';
 import { injectable } from 'tsyringe';
 
 @injectable()
-class AccuWeatherProxy implements IProxy {
+class AccuWeatherProxy implements Proxy {
     service: AccuWeatherService;
     responseBuilder: AccuWeatherResponseBuilder;
 
