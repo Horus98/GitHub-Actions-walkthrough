@@ -2,7 +2,6 @@ import Proxy from './Proxy';
 import WeatherResponse from '../WeatherResponse';
 import AccuWeatherService from '../services/AccuWeatherService';
 import AccuWeatherResponseBuilder from './AccuWeatherResponseBuilder';
-
 import { injectable } from 'tsyringe';
 
 @injectable()
