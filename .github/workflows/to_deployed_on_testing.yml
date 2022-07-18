@@ -1,15 +1,16 @@
-name: Mover la tarjeta del pull request a "To do"
+name: Move card to 'Deployed on Testing' column
 
 on:
   pull_request:
-    types: [converted_to_draft]
+    types: [closed]
 
 jobs:
   automate-project-columns:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - uses: alex-page/github-project-automation-plus@v0.8.1
         with:
           project: Microservice Development
-          column: To Do
+          column: Deployed on Testing
           repo-token: ${{ secrets.GH_TOKEN }}
