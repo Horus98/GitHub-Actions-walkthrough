@@ -5,10 +5,10 @@ import { autoInjectable } from 'tsyringe';
 class FreeWeatherAPIResponseBuilder {
     private NAME = 'Free Weather API';
 
-    buildWeatherResponse(data, city: string): WeatherResponse {
+    buildWeatherResponse(data): WeatherResponse {
         return {
             source: this.NAME,
-            city: city,
+            city: data.location.name,
             min_temperature: {
                 value: data.forecast.forecastday[0].day.mintemp_c,
                 unit: 'C'
