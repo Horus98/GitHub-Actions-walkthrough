@@ -34,6 +34,7 @@ class AccuWeatherResponseBuilder {
         const ampm = hour >= 12 ? 'PM' : 'AM';
         const hourFormatted = hour % 12 === 0 ? '12' : '0' + hour % 12;
         return hourFormatted + ':' + minutes + ' ' + ampm;
+    }
 
     getEmptyReponse(): WeatherResponse {
         return {
