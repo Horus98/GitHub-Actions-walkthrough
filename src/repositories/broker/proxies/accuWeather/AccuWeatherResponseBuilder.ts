@@ -22,9 +22,18 @@ class AccuWeatherResponseBuilder {
                 unit: data.DailyForecasts[0].Day.Wind.Speed.Unit,
                 degrees: data.DailyForecasts[0].Day.Wind.Direction.Degrees
             },
-            sunrise: data.DailyForecasts[0].Sun.EpochRise,
-            sunset: data.DailyForecasts[0].Sun.EpochSet,
+            sunrise: this.getHourFromIsoDate(data.DailyForecasts[0].Sun.Rise),
+            sunset: this.getHourFromIsoDate(data.DailyForecasts[0].Sun.Set),
         };
+    }
+
+    getHourFromIsoDate(isoDate: string): string {
+        const time = isoDate.split('T')[1].split(':');
+        const hour = parseInt(time[0]);
+        const minutes = time[1];
+        const ampm = hour >= 12 ? 'PM' : 'AM';
+        const hourFormatted = hour % 12 === 0 ? '12' : '0' + hour % 12;
+        return hourFormatted + ':' + minutes + ' ' + ampm;
     }
 
     getEmptyReponse(): WeatherResponse {
