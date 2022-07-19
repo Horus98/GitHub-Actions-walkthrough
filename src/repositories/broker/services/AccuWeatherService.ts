@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class AccuWeatherService {
 
-    API_KEY = 'Vpxn597i5RRSyJl4cInNuoLqHQpBLS4U';
+    API_KEY = 'BWVnen3sLd3Oe5AlnmrwiMpnG1SfxxyA';
 
     async getCityCode(city: string): Promise<any> {
         return axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.API_KEY}&q=${city}&language=en-us&details=true`);
