@@ -25,10 +25,6 @@ function checkWeatherResponseFormat(element) {
     expect(element.max_temperature).toBeDefined();
     checkTemperatureResponseFormat(element.max_temperature);
     checkWindResponseFormat(element);
-    expect(element.sunrise).toBeDefined();
-    expect(typeof element.sunrise).toBe('number');
-    expect(element.sunset).toBeDefined();
-    expect(typeof element.sunset).toBe('number');
 }
 
 function checkWindResponseFormat(element) {
@@ -48,4 +44,17 @@ function checkTemperatureResponseFormat(temperatureResponse) {
     expect(typeof temperatureResponse.value).toBe('number');
     expect(temperatureResponse.unit).toBeDefined();
     expect(typeof temperatureResponse.unit).toBe('string');
+}
+
+function checkTimeResponseFormat(element) {
+    expect(element.sunrise).toBeDefined();
+    expect(typeof element.sunrise).toBe('string');
+    expect(element.sunset).toBeDefined();
+    expect(typeof element.sunset).toBe('string');
+    expect(validTime(element.sunset)).toBeTruthy();
+    expect(validTime(element.sunrise)).toBeTruthy();
+}
+
+function validTime (time: string) {
+    return true;
 }
