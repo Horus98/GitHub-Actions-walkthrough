@@ -57,5 +57,6 @@ function checkTimeResponseFormat(element) {
 }
 
 function validTime (time: string) {
-    return true;
+    const timeRegex = /^(0[1-9]|1[0-2]):[0-5][0-9] (AM|PM)$/;
+    return timeRegex.test(time);
 }
