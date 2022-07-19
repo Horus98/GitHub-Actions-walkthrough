@@ -7,8 +7,8 @@ interface WeatherResponse {
     min_temperature: TemperatureResponse,
     max_temperature: TemperatureResponse,
     wind: WindResponse,
-    sunrise: Number,
-    sunset: Number,
+    sunrise: string,
+    sunset: string,
 }
 
 export default WeatherResponse;
