@@ -53,8 +53,8 @@ class AccuWeatherResponseBuilder {
                 unit: '',
                 degrees: 0
             },
-            sunrise: '0',
-            sunset: '0'
+            sunrise: 'null',
+            sunset: 'null'
         };
     }
 }
