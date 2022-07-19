@@ -26,9 +26,9 @@ function checkWeatherResponseFormat(element) {
     checkTemperatureResponseFormat(element.max_temperature);
     checkWindResponseFormat(element);
     expect(element.sunrise).toBeDefined();
-    expect(typeof element.sunrise).toBe('number');
+    expect(typeof element.sunrise).toBe('string');
     expect(element.sunset).toBeDefined();
-    expect(typeof element.sunset).toBe('number');
+    expect(typeof element.sunset).toBe('string');
 }
 
 function checkWindResponseFormat(element) {
