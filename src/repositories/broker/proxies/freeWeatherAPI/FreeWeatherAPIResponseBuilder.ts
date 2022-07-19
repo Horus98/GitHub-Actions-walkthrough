@@ -10,20 +10,20 @@ class FreeWeatherAPIResponseBuilder {
             source: this.NAME,
             city: city,
             min_temperature: {
-                value: 0,
-                unit: ''
+                value: data.forecast.forecastday[0].day.mintemp_c,
+                unit: 'C'
             },
             max_temperature: {
-                value: 0,
-                unit: ''
+                value: data.forecast.forecastday[0].day.maxtemp_c,
+                unit: 'C'
             },
             wind: {
-                speed: 0,
-                unit: '',
-                degrees: 0
+                speed: data.current.wind_kph,
+                unit: 'km/h',
+                degrees: data.current.wind_degree
             },
-            sunrise: '',
-            sunset: '',
+            sunrise: data.forecast.forecastday[0].astro.sunrise,
+            sunset: data.forecast.forecastday[0].astro.sunset,
         };
     }
 }
