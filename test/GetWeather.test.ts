@@ -25,6 +25,7 @@ function checkWeatherResponseFormat(element) {
     expect(element.max_temperature).toBeDefined();
     checkTemperatureResponseFormat(element.max_temperature);
     checkWindResponseFormat(element);
+    checkTimeResponseFormat(element);
 }
 
 function checkWindResponseFormat(element) {

@@ -9,7 +9,7 @@
     "start": "node dist/src/index.js",
     "lint": "eslint --ext ts,tsx .",
     "lint:fix": "eslint --ext ts,tsx . --fix",
-    "test": "jest --reporters='default' --reporters='jest-junit'",
+    "test": "jest --reporters='default'  --maxWorkers 2 --reporters='jest-junit'",
     "prepare": "husky install"
   },
   "lint-staged": {
