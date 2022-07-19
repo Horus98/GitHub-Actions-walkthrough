@@ -26,6 +26,28 @@ class FreeWeatherAPIResponseBuilder {
             sunset: data.forecast.forecastday[0].astro.sunset,
         };
     }
+
+    getEmptyReponse(): WeatherResponse {
+        return {
+            source: this.NAME,
+            city: '',
+            min_temperature: {
+                value: 0,
+                unit: ''
+            },
+            max_temperature: {
+                value: 0,
+                unit: ''
+            },
+            wind: {
+                speed: 0,
+                unit: '',
+                degrees: 0
+            },
+            sunrise: 'null',
+            sunset: 'null'
+        };
+    }
 }
 
 export default FreeWeatherAPIResponseBuilder;

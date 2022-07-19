@@ -15,8 +15,12 @@ class FreeWeatherAPIProxy implements Proxy {
     }
 
     async getWeatherResponse(cityName: string): Promise<WeatherResponse> {
-        const currentWetherResponse = await this.service.getCurrentWeather(cityName);
-        return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data);
+        try {
+            const currentWetherResponse = await this.service.getCurrentWeather(cityName);
+            return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data);
+        } catch (error) {
+            return this.responseBuilder.getEmptyReponse();
+        }
     }
 }
 
