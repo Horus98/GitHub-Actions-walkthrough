@@ -15,9 +15,13 @@ class AccuWeatherProxy implements Proxy {
     }
 
     async getWeatherResponse(city: string): Promise<WeatherResponse> {
-        const cityResponse = await this.service.getCityCode(city);
-        const currentWetherResponse = await this.service.getCurrentWeather(cityResponse.data[0].Details.CanonicalLocationKey);
-        return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data, cityResponse.data[0].LocalizedName);
+        try {
+            const cityResponse = await this.service.getCityCode(city);
+            const currentWetherResponse = await this.service.getCurrentWeather(cityResponse.data[0].Details.CanonicalLocationKey);
+            return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data, cityResponse.data[0].LocalizedName);
+        } catch (error) {
+            return this.responseBuilder.getEmptyReponse();
+        }
     }
 }
 

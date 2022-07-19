@@ -26,6 +26,28 @@ class AccuWeatherResponseBuilder {
             sunset: data.DailyForecasts[0].Sun.EpochSet,
         };
     }
+
+    getEmptyReponse(): WeatherResponse {
+        return {
+            source: this.NAME,
+            city: '',
+            min_temperature: {
+                value: 0,
+                unit: ''
+            },
+            max_temperature: {
+                value: 0,
+                unit: ''
+            },
+            wind: {
+                speed: 0,
+                unit: '',
+                degrees: 0
+            },
+            sunrise: -1,
+            sunset: -1
+        };
+    }
 }
 
 export default AccuWeatherResponseBuilder;
