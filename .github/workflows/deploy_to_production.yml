@@ -1,9 +1,9 @@
-name: Deploy a produccion
+name: Deploy to production environment
 
 on: [workflow_dispatch]
 
 jobs:
- merge-and-deploy-to-production:
+ merge-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Merge test -> main
