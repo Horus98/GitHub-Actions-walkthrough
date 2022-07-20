@@ -13,5 +13,5 @@ services:
     expose:
       - '4000'
     ports:
-      - '4000:4000'
+      - '4001:4000'
     command: npm run dev
