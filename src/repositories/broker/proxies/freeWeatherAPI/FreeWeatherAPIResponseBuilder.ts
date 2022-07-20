@@ -44,8 +44,8 @@ class FreeWeatherAPIResponseBuilder {
                 unit: '',
                 degrees: 0
             },
-            sunrise: 'null',
-            sunset: 'null'
+            sunrise: '',
+            sunset: ''
         };
     }
 }
