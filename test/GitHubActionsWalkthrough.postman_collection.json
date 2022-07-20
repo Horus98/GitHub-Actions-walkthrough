@@ -14,7 +14,7 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Response time is less than 10000ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(10000);",
+							"    pm.expect(pm.response.responseTime).to.be.below(30000);",
 							"});",
 							"",
 							"pm.test(\"Content-Type is present\", function () {",
@@ -51,6 +51,39 @@
 							"key": "city",
 							"value": "Bahia Blanca"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBadRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://typesrcipt-api.herokuapp.com/api",
+					"protocol": "https",
+					"host": [
+						"typesrcipt-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api"
 					]
 				}
 			},
