@@ -1,4 +1,4 @@
-name: Mover la tarjeta del pull request a "En desarrollo"
+name: Move card to 'In progress' column
 
 on:
   pull_request:
