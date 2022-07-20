@@ -12,7 +12,11 @@ class WeatherController {
     }
 
     getWeather = async (req: Request, res: Response) => {
-        const city = new String(req.query.city);
+        const city = req.query.city;
+        if(!city) {
+            res.status(400).end();
+            return;
+        }
         res.json({data: await this.weatherRepository.getWeather(city.toString())});
     };
 }
