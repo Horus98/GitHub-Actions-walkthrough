@@ -49,8 +49,13 @@ function checkTemperatureResponseFormat(temperatureResponse) {
 
 function checkTimeResponseFormat(element) {
     expect(element.sunrise).toBeDefined();
-    expect(typeof element.sunrise).toBe('string');
     expect(element.sunset).toBeDefined();
+    if (!element.city) {
+        expect(element.sunrise).toBe('');
+        expect(element.sunset).toBe('');
+        return;
+    }
+    expect(typeof element.sunrise).toBe('string');
     expect(typeof element.sunset).toBe('string');
     expect(validTime(element.sunset)).toBeTruthy();
     expect(validTime(element.sunrise)).toBeTruthy();
