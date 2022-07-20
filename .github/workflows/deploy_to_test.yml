@@ -25,5 +25,5 @@ jobs:
     - uses: matt-ball/newman-action@master
       with:
         apiKey: ${{ secrets.POSTMAN_API_KEY }}
-        collection: ${{ secrets.POSTMAN_COLLECTION }}
-        environment: ${{ secrets.POSTMAN_ENVIRONMENT }}
+        collection: ./test/GitHubActionsWalkthrough.postman_collection.json
+        environment: ./test/GitHubEnv.postman_environment.json

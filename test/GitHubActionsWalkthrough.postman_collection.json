@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "ccab786e-d644-491d-a8c4-f2862e1ee33b",
+		"name": "GitHub Actions walkthrough",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21692613"
+	},
+	"item": [
+		{
+			"name": "Get weather",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 10000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(10000);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"pm.test('Number of wheather sources = ' + data.length, function () {",
+							"    const data = pm.response.json().data;",
+							"    console.log(data.length);",
+							"    pm.expect(data.length).to.be.greaterThan(0);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://typesrcipt-api.herokuapp.com/api?city=Bahia Blanca",
+					"protocol": "https",
+					"host": [
+						"typesrcipt-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api"
+					],
+					"query": [
+						{
+							"key": "city",
+							"value": "Bahia Blanca"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
