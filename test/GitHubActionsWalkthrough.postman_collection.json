@@ -55,6 +55,39 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GetBadRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://typesrcipt-api.herokuapp.com/api",
+					"protocol": "https",
+					"host": [
+						"typesrcipt-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
