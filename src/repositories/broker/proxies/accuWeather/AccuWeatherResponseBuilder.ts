@@ -1,5 +1,6 @@
 import WeatherResponse from '../../WeatherResponse';
 import { autoInjectable } from 'tsyringe';
+import EmptyResponse from '../../EmptyResponse';
 
 @autoInjectable()
 class AccuWeatherResponseBuilder {
@@ -37,25 +38,7 @@ class AccuWeatherResponseBuilder {
     }
 
     getEmptyReponse(): WeatherResponse {
-        return {
-            source: this.NAME,
-            city: '',
-            min_temperature: {
-                value: 0,
-                unit: ''
-            },
-            max_temperature: {
-                value: 0,
-                unit: ''
-            },
-            wind: {
-                speed: 0,
-                unit: '',
-                degrees: 0
-            },
-            sunrise: '',
-            sunset: ''
-        };
+        return new EmptyResponse(this.NAME);
     }
 }
 
