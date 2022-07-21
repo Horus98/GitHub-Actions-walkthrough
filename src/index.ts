@@ -6,7 +6,6 @@ import AccuWeatherProxy from './repositories/broker/proxies/accuWeather/AccuWeat
 import FreeWeatherAPIProxy from './repositories/broker/proxies/freeWeatherAPI/FreeWeatherAPIProxy';
 import OpenWeatherProxy from './repositories/broker/proxies/openWeather/OpenWeatherProxy';
 
-
 const app = express();
 
 const port = process.env.PORT || 4000;
