@@ -37,8 +37,9 @@ class AccuWeatherResponseBuilder {
     }
 
     private getHoursFormatted(hour: number): string {
-        const hourWithZeroPad = hour < 10 ? '0' + hour % 12 : '' + hour;
-        return hour % 12 === 0 ? '12' : hourWithZeroPad ;
+        const hourMod = hour % 12;
+        const hourWithZeroPad = hourMod < 10 ? '0' + hourMod : '' + hourMod;
+        return hourMod === 0 ? '12' : hourWithZeroPad;
     }
 
     getEmptyReponse(): WeatherResponse {
