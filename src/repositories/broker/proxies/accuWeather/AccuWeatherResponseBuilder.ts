@@ -28,13 +28,19 @@ class AccuWeatherResponseBuilder {
         };
     }
 
-    getHourFromIsoDate(isoDate: string): string {
+    private getHourFromIsoDate(isoDate: string): string {
         const time = isoDate.split('T')[1].split(':');
         const hour = parseInt(time[0]);
         const minutes = time[1];
         const ampm = hour >= 12 ? 'PM' : 'AM';
-        const hourFormatted = hour % 12 === 0 ? '12' : '0' + hour % 12;
+        const hourFormatted = this.getHoursFormatted(hour);
         return hourFormatted + ':' + minutes + ' ' + ampm;
+    }
+
+    private getHoursFormatted(hour: number): string {
+        const hourMod = hour % 12;
+        const hourWithZeroPad = hourMod < 10 ? '0' + hourMod : '' + hourMod;
+        return hourMod === 0 ? '12' : hourWithZeroPad;
     }
 
     getEmptyReponse(): WeatherResponse {
