@@ -6,8 +6,8 @@ import { injectable } from 'tsyringe';
 
 @injectable()
 class OpenWeatherProxy implements Proxy {
-    service: OpenWeatherService;
-    responseBuilder: OpenWeatherResponseBuilder;
+    private service: OpenWeatherService;
+    private responseBuilder: OpenWeatherResponseBuilder;
 
     constructor(service: OpenWeatherService, responseBuilder: OpenWeatherResponseBuilder) {
         this.service = service;
@@ -17,7 +17,7 @@ class OpenWeatherProxy implements Proxy {
     async getWeatherResponse(cityName: string): Promise<WeatherResponse> {
         try {
             const currentWetherResponse = await this.service.getCurrentWeather(cityName);
-            return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data);
+            return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data, currentWetherResponse.data.city.name);
         } catch (error) {
             return this.responseBuilder.getEmptyReponse();
         }
