@@ -6,8 +6,8 @@ import { injectable } from 'tsyringe';
 
 @injectable()
 class AccuWeatherProxy implements Proxy {
-    service: AccuWeatherService;
-    responseBuilder: AccuWeatherResponseBuilder;
+    private service: AccuWeatherService;
+    private responseBuilder: AccuWeatherResponseBuilder;
 
     constructor(service: AccuWeatherService, responseBuilder: AccuWeatherResponseBuilder) {
         this.service = service;
