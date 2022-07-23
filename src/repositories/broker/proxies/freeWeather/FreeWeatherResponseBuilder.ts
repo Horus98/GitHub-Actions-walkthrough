@@ -1,15 +1,15 @@
 import WeatherResponse from '../../WeatherResponse';
 import { autoInjectable } from 'tsyringe';
-import EmptyResponse from '../../EmptyResponse';
+import ResponseBuilder from '../../ResponseBuilder';
 
 @autoInjectable()
-class FreeWeatherAPIResponseBuilder {
-    private NAME = 'Free Weather API';
+class FreeWeatherAPIResponseBuilder extends ResponseBuilder  {
+    protected NAME = 'Free Weather API';
 
-    buildWeatherResponse(data): WeatherResponse {
+    buildWeatherResponse(data, city: string): WeatherResponse {
         return {
             source: this.NAME,
-            city: data.location.name,
+            city: city,
             min_temperature: {
                 value: data.forecast.forecastday[0].day.mintemp_c,
                 unit: 'C'
@@ -26,10 +26,6 @@ class FreeWeatherAPIResponseBuilder {
             sunrise: data.forecast.forecastday[0].astro.sunrise,
             sunset: data.forecast.forecastday[0].astro.sunset,
         };
-    }
-
-    getEmptyReponse(): WeatherResponse {
-        return new EmptyResponse(this.NAME);
     }
 }
 

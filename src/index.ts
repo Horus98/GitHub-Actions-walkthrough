@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 import express from 'express';
 import WeatherRouter from './WeatherRouter';
 import AccuWeatherProxy from './repositories/broker/proxies/accuWeather/AccuWeatherProxy';
-import FreeWeatherAPIProxy from './repositories/broker/proxies/freeWeatherAPI/FreeWeatherAPIProxy';
+import FreeWeatherAPIProxy from './repositories/broker/proxies/freeWeather/FreeWeatherProxy';
 import OpenWeatherProxy from './repositories/broker/proxies/openWeather/OpenWeatherProxy';
 
 const app = express();
