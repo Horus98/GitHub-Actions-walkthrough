@@ -17,7 +17,7 @@ class OpenWeatherProxy implements Proxy {
     async getWeatherResponse(cityName: string): Promise<WeatherResponse> {
         try {
             const currentWetherResponse = await this.service.getCurrentWeather(cityName);
-            return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data);
+            return this.responseBuilder.buildWeatherResponse(currentWetherResponse.data, currentWetherResponse.data.city.name);
         } catch (error) {
             return this.responseBuilder.getEmptyReponse();
         }

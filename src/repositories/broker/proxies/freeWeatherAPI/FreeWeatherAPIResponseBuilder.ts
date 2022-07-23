@@ -6,10 +6,10 @@ import EmptyResponse from '../../EmptyResponse';
 class FreeWeatherAPIResponseBuilder {
     private NAME = 'Free Weather API';
 
-    buildWeatherResponse(data): WeatherResponse {
+    buildWeatherResponse(data, city: string): WeatherResponse {
         return {
             source: this.NAME,
-            city: data.location.name,
+            city: city,
             min_temperature: {
                 value: data.forecast.forecastday[0].day.mintemp_c,
                 unit: 'C'

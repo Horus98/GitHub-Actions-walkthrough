@@ -1,13 +1,13 @@
 import Proxy from '../Proxy';
 import WeatherResponse from '../../WeatherResponse';
 import FreeWeatherAPIService from '../../services/FreeWeatherAPIService';
-import FreeWeatherAPIResponseBuilder from './FreeWeatherAPIResponseBuilder';
+import FreeWeatherAPIResponseBuilder from './FreeWeatherResponseBuilder';
 import { injectable } from 'tsyringe';
 
 @injectable()
 class FreeWeatherAPIProxy implements Proxy {
-    service: FreeWeatherAPIService;
-    responseBuilder: FreeWeatherAPIResponseBuilder;
+    private service: FreeWeatherAPIService;
+    private responseBuilder: FreeWeatherAPIResponseBuilder;
 
     constructor(service: FreeWeatherAPIService, responseBuilder: FreeWeatherAPIResponseBuilder) {
         this.service = service;

@@ -1,16 +1,15 @@
 import WeatherResponse from '../../WeatherResponse';
 import { autoInjectable } from 'tsyringe';
-import EmptyResponse from '../../EmptyResponse';
+import ResponseBuilder from '../../ResponseBuilder';
 
 @autoInjectable()
-class OpenWeatherResponseBuilder {
-    private NAME = 'Open Weather API';
+class OpenWeatherResponseBuilder extends ResponseBuilder {
+    protected NAME = 'Open Weather API';
 
-    buildWeatherResponse(data): WeatherResponse {
-        console.log(data.list[0].main.temp_max);
+    buildWeatherResponse(data, city: string): WeatherResponse {
         return {
             source: this.NAME,
-            city: data.city.name,
+            city: city,
             min_temperature: {
                 value: data.list[0].main.temp_min,
                 unit: 'C'
@@ -27,10 +26,6 @@ class OpenWeatherResponseBuilder {
             sunrise: this.formatDate(data.city.sunrise, data.city.timezone),
             sunset: this.formatDate(data.city.sunset, data.city.timezone),
         };
-    }
-
-    getEmptyReponse(): WeatherResponse {
-        return new EmptyResponse(this.NAME);
     }
 
     private formatDate(date: number, timeZone: number) {

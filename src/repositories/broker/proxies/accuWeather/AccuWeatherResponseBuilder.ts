@@ -1,10 +1,10 @@
 import WeatherResponse from '../../WeatherResponse';
 import { autoInjectable } from 'tsyringe';
-import EmptyResponse from '../../EmptyResponse';
+import ResponseBuilder from '../../ResponseBuilder';
 
 @autoInjectable()
-class AccuWeatherResponseBuilder {
-    private NAME = 'AccuWeather';
+class AccuWeatherResponseBuilder extends ResponseBuilder {
+    protected NAME = 'AccuWeather API';
 
     buildWeatherResponse(data, city: string): WeatherResponse {
         return {
@@ -41,10 +41,6 @@ class AccuWeatherResponseBuilder {
         const hourMod = hour % 12;
         const hourWithZeroPad = hourMod < 10 ? '0' + hourMod : '' + hourMod;
         return hourMod === 0 ? '12' : hourWithZeroPad;
-    }
-
-    getEmptyReponse(): WeatherResponse {
-        return new EmptyResponse(this.NAME);
     }
 }
 
