@@ -22,10 +22,3 @@ jobs:
           email: ${{ secrets.HEROKU_EMAIL }}
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME_MAIN }}
-
-      - uses: HiromiShikata/gh-actions-move-all-cards-on-projects@v1.0.1
-        with:
-          project_name: Microservice Development
-          from_column_name: Deployed on Testing
-          to_column_name: Deployed on Production
-          github_token: ${{ secrets.GH_TOKEN }}
